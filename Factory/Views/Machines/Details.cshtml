@@ -1,0 +1,48 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine;
+<div class="container">
+<br>
+<br>
+<div class="column">
+  <div class=row> 
+    <div class="card border-info mb-3" style="max-width: 40rem;">
+      <div class="card-header">
+        <h1>Machine details</h1>
+      </div>
+      <div class="card-body">
+        <h4> @Html.DisplayNameFor(model => model.MachineName):</h4><h3> @Html.DisplayFor(model => model.MachineName)</h3>
+        <br>
+        <h4> @Html.DisplayNameFor(model => model.MachineDetails):</h4><h3> @Html.DisplayFor(model => model.MachineDetails)</h3>
+          @if(@Model.JoinEntities.Count == 0)
+          {
+            <p>This machine has no babysitters!</p>
+          }
+          else
+          {
+            <h4>Babysitters watching this machine:</h4>
+            <ul>
+              @foreach(var join in Model.JoinEntities)
+              {
+                <li><h4>@join.Engineer.Name</h4></li>
+              }
+            </ul>
+          }
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="col-md-3">
+    <br>
+    <button type="button" class="btn btn-info" style="max-height: 5rem; max-width: 15rem;">@Html.ActionLink("Change machine details", "Edit", new { id = Model.MachineId })</button>
+    <br>
+    <br>
+    <button type="button" class="btn btn-info" style="max-height: 5rem; max-width: 15rem;">@Html.ActionLink("Pull the plug", "Delete", new { id = Model.MachineId })</button>
+    <br>
+    <br>
+    <button type="button" class="btn btn-info" style="max-height: 5rem; max-width: 15rem;">@Html.ActionLink("Back to machine list", "Index")</button>
+    </div> 
+  </div>
+</div>
