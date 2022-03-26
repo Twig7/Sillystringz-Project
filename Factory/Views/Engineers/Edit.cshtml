@@ -1,0 +1,45 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+<div class="container">
+<br>
+<br>
+<div class="column">
+  <div class=row>
+    <div class="card border-primary mb-3" style="max-width: 40rem;">
+      <div class="card-header">
+        <h3>Update or change babysitter:</h3>
+        <h4>@Html.DisplayFor(model => model.Name)</h4>
+      </div>
+      <div class="card-body">
+        @using (Html.BeginForm())
+        {
+          @Html.HiddenFor(model => model.EngineerId)
+          @Html.LabelFor(model => model.Name)
+          @Html.EditorFor(model => model.Name)
+          <br>
+          @Html.LabelFor(model => model.Details)
+          @Html.EditorFor(model => model.Details)
+          <br>
+          @Html.Label("Assign Machine to babysit")
+          @Html.DropDownList("MachineId")
+          <br>
+          <br>
+          <input type="submit" value="Save" class="btn btn-primary"/>
+        }
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="col-md-3">
+    <br>
+    <button type="button" class="btn btn-primary" style="max-height: 5rem; max-width: 15rem;">@Html.ActionLink("Back to babysitters", "Index")</button>
+    <br>
+    <br>
+    <hr>
+    <button type="button" class="btn btn-primary" style="max-height: 5rem; max-width: 15rem;">@Html.ActionLink("Home", "Index", "Home")</button>
+    </div>   
+  </div>
+</div>
