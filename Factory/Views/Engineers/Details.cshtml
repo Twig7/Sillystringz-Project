@@ -1,0 +1,56 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+<div class="container">
+<br>
+<br>
+<div class="column">
+  <div class=row>
+    <div class="card border-primary mb-3" style="max-width: 40rem;">
+      <div class="card-header">
+        <h1>Glorified Machine babysitter Details</h1>
+      </div>
+      <div class="card-body">
+        <h4>@Html.DisplayNameFor(model => model.Name):</h4><h3> @Html.DisplayFor(model => model.Name)</h3>
+        <br>
+        <h4>@Html.DisplayNameFor(model => model.Details):</h4><h3> @Html.DisplayFor(model => model.Details)</h3>
+          @if (@Model.JoinEntities.Count == 0)
+          {
+            <p>This babysitter hasn't been given a machine to care for!</p>
+          }
+          else
+          {
+            <h4>Machines this babysitter is watching:</h4>
+            <ul>
+              @foreach (var join in Model.JoinEntities)
+              {
+                <li><h4>@join.Machine.MachineName</h4></li>
+                @using (Html.BeginForm("DeleteMachine", "Engineers"))
+                {
+                  @Html.Hidden("joinId", @join.EngineerMachineId)
+                  <input type="submit" value="Delete" class="btn btn-primary"/>
+                }
+              }
+            </ul>
+          }
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="col-md-3">
+    <br>
+    <button type="button" class="btn btn-primary" style="max-height: 5rem; max-width: 15rem;">@Html.ActionLink("Assign a Machine", "AddMachine", new { id = Model.EngineerId })</button>
+    <br>
+    <br>
+    <button type="button" class="btn btn-primary" style="max-height: 5rem; max-width: 15rem;">@Html.ActionLink("Reassign babysitter", "Edit", new { id = Model.EngineerId })</button>
+    <br>
+    <br>
+    <button type="button" class="btn btn-primary" style="max-height: 5rem; max-width: 15rem;">@Html.ActionLink("Fire babysitter", "Delete", new { id = Model.EngineerId })</button>
+    <br>
+    <br>
+    <button type="button" class="btn btn-primary" style="max-height: 5rem; max-width: 15rem;">@Html.ActionLink("Back to babysitters", "Index")</button>
+    </div> 
+  </div>
+</div>
