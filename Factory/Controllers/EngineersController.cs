@@ -7,8 +7,9 @@ using System.Linq;
 
 namespace Factory.Controllers
 {
-  public class EngineersController : Controllers{
-    private readonly Factorycontext _db;
+  public class EngineersController : Controller
+  {
+    private readonly FactoryContext _db;
 
     public EngineersController(FactoryContext db)
     {
@@ -38,7 +39,7 @@ namespace Factory.Controllers
     public ActionResult Details(int id)
     {
       var thisEngineer = _db.Engineers
-        .Includ(engineer => engineer.JoinEntities)
+        .Include(engineer => engineer.JoinEntities)
         .ThenInclude(join => join.Machine)
         .FirstOrDefault(engineer => engineer.EngineerId == id);
       return View(thisEngineer);
