@@ -1,0 +1,40 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+<div class="container">
+<br>
+<br>
+<div class="column">
+  <div class=row>
+    <div class="card border-info mb-3" style="max-width: 40rem;">
+      <div class="card-header">
+        <h2>Change those machine details:</h2>
+        <h3> @Html.DisplayFor(model => model.MachineName)</h3>
+      </div>
+      <div class="card-body">
+        @using (Html.BeginForm())
+        {
+          @Html.HiddenFor(model => model.MachineId)
+          @Html.LabelFor(model => model.MachineName)
+          @Html.EditorFor(model => model.MachineName)
+          <br>
+          @Html.LabelFor(model => model.MachineDetails)
+          @Html.TextBoxFor(model => model.MachineDetails)
+          <br>
+          <input type="submit" value="Save" class="btn btn-info"/>
+        }
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="col-md-3">
+    <br>
+    <button type="button" class="btn btn-info" style="max-height: 5rem; max-width: 15rem;">@Html.ActionLink("Back to machine list", "Index")</button>
+    <br>
+    <br>
+    <button type="button" class="btn btn-info" style="max-height: 5rem; max-width: 15rem;">@Html.ActionLink("Home", "Index", "Home")</button>
+    </div>   
+  </div>
+</div>
