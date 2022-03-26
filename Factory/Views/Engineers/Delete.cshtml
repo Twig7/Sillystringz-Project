@@ -4,15 +4,31 @@
 
 @model Factory.Models.Engineer
 <div class="container">
-  <br>
-  <h2>Dang, did they suck that much?</h2>
-
-  @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
-  @using (Html.BeginForm())
-  {
-    <input type="submit" value="Delete" />
-  }
-  <br>
-  @Html.ActionLink("Back to babysitters", "Index")
-  <p>@Html.ActionLink("Home", "Index", "Home")</p>
+<br>
+<br>
+<div class="column">
+  <div class=row>
+    <div class="card border-primary mb-3" style="max-width: 40rem;">
+      <div class="card-header">
+        <h1>Kick this babysitter out?</h1>
+      </div>
+      <div class="card-body">
+        <h4> @Html.DisplayNameFor(model => model.Name):</h4><h3> @Html.DisplayFor(model => model.Name)</h3>
+        <br>
+        @using (Html.BeginForm())
+        {
+          <input type="submit" value="Delete" class="btn btn-primary"/>
+        }
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="col-md-3">
+    <br>
+      <button type="button" class="btn btn-primary" style="max-height: 5rem; max-width: 15rem;">@Html.ActionLink("Back to babysitters", "Index")</button>
+      <br>
+      <br>
+      <button type="button" class="btn btn-primary" style="max-height: 5rem; max-width: 15rem;">@Html.ActionLink("Home", "Index", "Home")</button>
+    </div>
+  </div>
 </div>
