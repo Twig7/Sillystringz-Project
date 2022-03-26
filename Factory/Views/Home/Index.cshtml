@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+<div class="container">
+  <center>
+    <h1>Welcome, Dr. Sillystringz!</h1>
+  </center>
+  <br>
+  <br>
+  <h3>Let us help you hire babysitters for your many machines!</h3>
+  <br>
+  <br>
+  <div class="column">
+    <div class="row">
+      <div class="card-border-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header">
+          <h2> @Html.ActionLink("Babysitters", "Index", "Babysitters")</h2>
+        </div>
+        <br>
+        <br>
+        <div class="card border-info mb-3" style="max-height: 20rem; max-width: 30rem;">
+          <div class="card-header">
+            <h2> @Html.ActionLink("Machines", "Index", "Machines")</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
