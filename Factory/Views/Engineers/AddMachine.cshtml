@@ -1,0 +1,32 @@
+@{
+  Layout = "_Layout";
+}
+@model Factory.Models.Engineer
+<div class="container">
+  <div class="column">
+    <div class="row">
+      <div class="card border-primary mb-3" style="max-width: 40rem;">
+        <div class="card-header">
+          <h1>Give this machine a babysitter</h1>
+        </div>
+        <div class="card=body">
+          <h3>Do you want this engineer to babysit?</h3>
+          <h3> @Html.DisplayFor(model => model.Name)</h3>
+          <br>
+          @using (Html.BeginForm())
+          {
+            @Html.HiddenFor(model => model.EngineerId)
+            @Html.Label("Select Machine")
+            @Html.DropDownList("MachineId")
+            <br>
+            <input type="submit" value="Save" class="btn btn-primary"/>
+          }
+        </div>
+      </div>
+      <br>
+      <div class="col-md-3">
+        <button type="button" class="btn btn-primary" style="max-height: 5rem; max-width: 15rem;">@Html.ActionLink("Back to List", "Index")</button>
+      </div>
+    
+  </div>
+</div>
